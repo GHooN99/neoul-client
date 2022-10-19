@@ -44,6 +44,7 @@ export const miniReset = css`
   input,
   select {
     margin: 0;
+    font-family: inherit;
   }
   html {
     box-sizing: border-box;
