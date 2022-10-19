@@ -1,18 +1,10 @@
-import {
-  backgrounds,
-  borders,
-  buttons,
-  dims,
-  pallete,
-  shadows,
-  texts,
-} from "./colors";
+import { backgrounds, borders, buttons, dims, texts } from "./colors";
+import { pallete } from "./pallete";
 
 export const theme = {
   pallete,
   backgrounds,
   texts,
-  shadows,
   dims,
   buttons,
   borders,

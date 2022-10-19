@@ -1,9 +1,8 @@
-import { pallete } from "../pallete/pallete";
+import { pallete } from "../pallete";
 
 export const backgrounds = {
-  base: pallete.white,
-  gray1: pallete.gray[100],
-  gray2: pallete.gray[200],
+  base: pallete.gray[700],
+  upper: pallete.gray[600],
 } as const;
 
 export type Backgrounds = typeof backgrounds;

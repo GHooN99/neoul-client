@@ -1,9 +1,9 @@
-import { pallete } from "../pallete/pallete";
+import { pallete } from "../pallete";
 
 export const buttons = {
-  cyan: pallete.cyan[300],
-  red: pallete.red[300],
-  gray: pallete.gray[500],
+  main: pallete.blue,
+  gray: pallete.gray[400],
+  white: pallete.gray[300],
 };
 
 export const presseds = {
