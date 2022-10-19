@@ -2,9 +2,9 @@ import { API } from "@remotes/apiClient";
 import { Todo, TodoInput } from "./todos.types";
 
 export const todosService = {
-  path: "todos" as const,
+  path: "posts" as const,
 
-  getAllTodos: () => API.GET<Todo[]>(`${todosService.path}`),
+  getAllTodos: async () => API.GET<Todo[]>(`${todosService.path}`),
 
   getTodoDetail: (id: number) => () =>
     API.GET<Todo>(`${todosService.path}/${id}`),

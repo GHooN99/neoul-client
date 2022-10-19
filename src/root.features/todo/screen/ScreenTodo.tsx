@@ -1,14 +1,14 @@
-import { Button } from "@components/Button";
+// import { Button } from "@components/Button";
 import { useTodosQuery } from "../hooks/useTodosQuery";
 
 const ScreenTodo = () => {
   const { data } = useTodosQuery();
   console.log(data);
-
+  console.log(process.env.NEXT_PUBLIC_DEVELOPMENT_API_BASE_URL);
   return (
     <div style={{ height: 100 }}>
       <h2>안녕하세요 </h2>
-      <Button variant="primary">버튼!</Button>
+      {/* <Button variant="primary">버튼!</Button>
       <Button variant="secondary">버튼!</Button>
       <Button variant="text">버튼!</Button>
       <Button variant="primary" color="gray">
@@ -19,7 +19,7 @@ const ScreenTodo = () => {
       </Button>
       <Button variant="primary" color="gray" fullWidth>
         버튼
-      </Button>
+      </Button> */}
     </div>
   );
 };
