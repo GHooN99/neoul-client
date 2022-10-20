@@ -4,6 +4,7 @@ export const buttons = {
   main: pallete.blue,
   gray: pallete.gray[400],
   white: pallete.gray[300],
+  red: pallete.red,
 };
 
 export const presseds = {

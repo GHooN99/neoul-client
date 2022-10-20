@@ -10,9 +10,9 @@ export const pallete = {
     600: "#212121",
     700: "#191919",
   },
-
+  green: "#85FA4E",
   red: "#E95656",
-  blue: "2FA3C8",
+  blue: "#2FA3C8",
 } as const;
 
 export type Pallete = typeof pallete;

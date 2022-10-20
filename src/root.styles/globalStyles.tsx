@@ -34,6 +34,6 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     font-family: 'NanumSquareRound';
- 
+    background-color: #212121;
   }
 `;

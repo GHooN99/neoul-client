@@ -7,6 +7,7 @@ export const texts = {
   placeholder: pallete.gray[400],
   dark: pallete.gray[700],
   error: pallete.red,
+  success: pallete.green,
   primary: pallete.blue,
 } as const;
 
