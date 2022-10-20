@@ -103,10 +103,8 @@ const buttonTransitions = css`
   ${({ theme }) => {
     const { shadows } = theme;
     return css`
-      transition-duration: 0.1s;
-      &:active {
-        border-radius: 10px;
-      }
+      transition-duration: 0.15s;
+
       &:after {
         content: "";
         display: block;
