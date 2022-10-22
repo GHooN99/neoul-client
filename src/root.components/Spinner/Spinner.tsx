@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 interface SpinnerProps {
+  /**
+   * 스피너의 크기를 지정합니다.
+   * @notice 적정크기: 5
+   */
   size: number;
 }
 

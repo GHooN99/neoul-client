@@ -13,6 +13,7 @@ export interface BaseButtonProps
 export interface ButtonStyleProps {
   /**
    * 버튼의 사이즈를 지정합니다.
+   * @defaultValue "regular"
    */
   size?: ButtonSize;
 
@@ -23,7 +24,6 @@ export interface ButtonStyleProps {
 
   /**
    * 버튼의 메인 색을 지정합니다.
-   * varient에 따라 배경 혹은 텍스트의 색이 됩니다.
    * @defaultValue "main"
    */
   color?: color;
