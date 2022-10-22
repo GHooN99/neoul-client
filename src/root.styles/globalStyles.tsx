@@ -5,6 +5,7 @@ export const GlobalStyles = createGlobalStyle`
   
   ${miniReset}
 
+  
   @font-face {
     font-family: 'NanumSquareRound';
     src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareRound/NanumSquareRoundR.eot);

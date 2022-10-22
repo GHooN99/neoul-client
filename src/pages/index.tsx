@@ -13,11 +13,3 @@ const Home: NextPage = (props) => {
 };
 
 export default Home;
-
-export const getServerSideProps = async () => {
-  console.log(process.env.DEVELOPMENT_API_BASE_URL);
-
-  return {
-    props: {},
-  };
-};

@@ -25,7 +25,7 @@ const MyApp = ({ Component, pageProps }: AppProps<Record<string, unknown>>) => {
   return (
     <>
       <Head>
-        <title>TS-React-Template</title>
+        <title>Neoul:너울</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
