@@ -32,7 +32,9 @@ const defaultButtonStyle = css<ButtonStyleProps>`
         color: ${texts.disabled};
         background-color: ${buttons.gray};
         cursor: not-allowed;
-
+        &:active {
+          opacity: 1;
+        }
         &:after {
           display: none;
         }
@@ -103,7 +105,13 @@ const buttonTransitions = css`
   ${({ theme }) => {
     const { shadows } = theme;
     return css`
-      transition-duration: 0.15s;
+      transition-duration: 0.08s;
+
+      &:active {
+        transition: 0s;
+        transition-duration: 0s;
+        opacity: 0.85;
+      }
 
       &:after {
         content: "";
@@ -115,7 +123,7 @@ const buttonTransitions = css`
         width: 100%;
         height: 100%;
         opacity: 0;
-        transition: all 0.4s;
+        transition: all 0.3s;
         box-shadow: 0 0 10px 10px ${shadows.basic};
       }
 
