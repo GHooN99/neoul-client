@@ -1,5 +1,7 @@
 import { useState } from "react";
+import styled from "styled-components";
 import { Button } from "@components/Button";
+import { Input } from "@components/Input";
 import { useTodosQuery } from "../hooks/useTodosQuery";
 
 const ScreenTodo = () => {
@@ -22,7 +24,6 @@ const ScreenTodo = () => {
 
   return (
     <div style={{ height: 100, padding: "0 20px" }}>
-      <h2>안녕하세요 </h2>
       <Button onClick={handleClick} loading={isLoading} fullWidth color="main">
         로그인
       </Button>
@@ -39,8 +40,30 @@ const ScreenTodo = () => {
       <Button style={{ width: 100 }} size="small" color="red">
         삭제
       </Button>
+      <StyledWrapper>
+        <Input
+          className="classNamehi"
+          fullWidth
+          // hasError={true}
+          // errorMessage="올바른 이메일 형식을 입력해주세요."
+        />
+        <Input
+          style={{ marginBottom: 20 }}
+          fullWidth
+          hasError={true}
+          errorMessage="마진 바텀"
+        />
+        <Input hasError={true} errorMessage="안녕" />
+        <Input hasError={false} errorMessage="안녕" />
+      </StyledWrapper>
     </div>
   );
 };
 
 export default ScreenTodo;
+
+const StyledWrapper = styled.div`
+  .classNamehi {
+    margin-bottom: 50px;
+  }
+`;
