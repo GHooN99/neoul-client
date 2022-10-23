@@ -7,6 +7,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import "@styles/fonts.css";
 import { GlobalStyles } from "@styles/globalStyles";
 import { theme } from "@styles/theme";
 
@@ -29,8 +30,8 @@ const MyApp = ({ Component, pageProps }: AppProps<Record<string, unknown>>) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
 
-      <GlobalStyles />
       <ThemeProvider theme={theme}>
+        <GlobalStyles />
         <QueryClientProvider client={queryClient}>
           {process.env.NODE_ENV !== "production" && (
             <ReactQueryDevtools initialIsOpen={false} />
