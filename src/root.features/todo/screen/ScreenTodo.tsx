@@ -44,8 +44,8 @@ const ScreenTodo = () => {
         <Input
           className="classNamehi"
           fullWidth
-          // hasError={true}
-          // errorMessage="올바른 이메일 형식을 입력해주세요."
+          hasError={true}
+          errorMessage="올바른 이메일 형식을 입력해주세요."
         />
         <Input
           style={{ marginBottom: 20 }}
@@ -53,8 +53,26 @@ const ScreenTodo = () => {
           hasError={true}
           errorMessage="마진 바텀"
         />
-        <Input hasError={true} errorMessage="안녕" />
-        <Input hasError={false} errorMessage="안녕" />
+        <Input
+          style={{ marginBottom: 20 }}
+          placeholder="이메일"
+          type="email"
+          fullWidth
+        />
+        <Input
+          style={{ marginBottom: 20 }}
+          placeholder="비밀번호 (8자 이상)"
+          type="password"
+          fullWidth
+        />
+        <Button
+          onClick={handleClick}
+          loading={isLoading}
+          fullWidth
+          color="main"
+        >
+          로그인
+        </Button>
       </StyledWrapper>
     </div>
   );
