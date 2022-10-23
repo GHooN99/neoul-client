@@ -29,10 +29,6 @@ const ScreenTodo = () => {
 
   return (
     <div style={{ height: 100, padding: "0 20px" }}>
-      <Button onClick={handleClick} loading={isLoading} fullWidth color="main">
-        로그인
-      </Button>
-
       <Button style={{ width: 300 }} disabled color="gray">
         disabled
       </Button>
@@ -70,8 +66,15 @@ const ScreenTodo = () => {
           type="password"
           fullWidth
         />
-
-        <Button fullWidth onClick={openModal}>
+        <Button
+          onClick={handleClick}
+          loading={isLoading}
+          fullWidth
+          color="main"
+        >
+          로그인
+        </Button>
+        <Button fullWidth color="red" onClick={openModal}>
           삭제 모달 오픈
         </Button>
         {isOpen && (
@@ -87,7 +90,7 @@ const ScreenTodo = () => {
             onClose={closeModal}
           />
         )}
-        <Button fullWidth onClick={openEditModal}>
+        <Button fullWidth color="white" onClick={openEditModal}>
           수정 모달 오픈
         </Button>
         {isEditOpen && (

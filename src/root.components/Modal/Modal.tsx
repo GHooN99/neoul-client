@@ -4,6 +4,15 @@ import { Portal } from "@components/Portal";
 import { StyledMask, StyledModalWrapper } from "./Modal.styled";
 import type { ModalProps } from "./Modal.types";
 
+/**
+ * 공통 모달 컴포넌트입니다.
+ * 모달의 렌더링 여부는 `useModal` 커스텀 훅을 사용해 외부에서 제어합니다.
+ * @example ```ts
+  const [isOpen,openModal,closeModal] = useModal();
+  ...
+  return isOpen && <Modal onClose={closeModal} />
+ ```
+ */
 const Modal = ({
   id,
   onConfirm,
