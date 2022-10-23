@@ -53,6 +53,7 @@ const Modal = ({
                 fullWidth
                 color="white"
                 size="small"
+                disabled={loading}
                 onClick={handleModalClose}
               >
                 {cancelText}
