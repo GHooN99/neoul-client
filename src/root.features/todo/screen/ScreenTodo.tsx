@@ -3,14 +3,16 @@ import styled from "styled-components";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 import { Modal } from "@components/Modal";
+import { Toast } from "@components/Toast";
 import { useModal } from "@hooks/useModal";
+import { useToast } from "@hooks/useToast";
 import { useTodosQuery } from "../hooks/useTodosQuery";
 
 const ScreenTodo = () => {
   const delay = async () => {
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
       setTimeout(() => {
-        resolve(null);
+        resolve();
       }, 2000);
     });
   };
@@ -18,6 +20,8 @@ const ScreenTodo = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, openModal, closeModal] = useModal();
   const [isEditOpen, openEditModal, closeEditModal] = useModal();
+  const openSuccessToast = useToast("✅ 성공적으로 수정되었습니다.");
+  const openFailToast = useToast("⚠️ 문제가 발생했습니다. 다시시도해주세요.");
 
   const handleClick = async () => {
     setIsLoading(true);
@@ -105,6 +109,12 @@ const ScreenTodo = () => {
             onClose={closeEditModal}
           />
         )}
+        <Button fullWidth onClick={openSuccessToast}>
+          성공 메시지 토스트 오픈
+        </Button>
+        <Button fullWidth color="red" onClick={openFailToast}>
+          실패 메시지 토스트 오픈
+        </Button>
       </StyledWrapper>
     </div>
   );
