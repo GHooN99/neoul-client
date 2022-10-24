@@ -3,14 +3,15 @@ import styled from "styled-components";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 import { Modal } from "@components/Modal";
+import { Toast } from "@components/Toast";
 import { useModal } from "@hooks/useModal";
 import { useTodosQuery } from "../hooks/useTodosQuery";
 
 const ScreenTodo = () => {
   const delay = async () => {
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
       setTimeout(() => {
-        resolve(null);
+        resolve();
       }, 2000);
     });
   };
