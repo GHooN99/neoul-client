@@ -7,6 +7,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ToastProvider } from "@components/Toast";
 import { GlobalStyles } from "@styles/globalStyles";
 import { theme } from "@styles/theme";
 
@@ -31,14 +32,16 @@ const MyApp = ({ Component, pageProps }: AppProps<Record<string, unknown>>) => {
 
       <GlobalStyles />
       <ThemeProvider theme={theme}>
-        <QueryClientProvider client={queryClient}>
-          {process.env.NODE_ENV !== "production" && (
-            <ReactQueryDevtools initialIsOpen={false} />
-          )}
-          <Hydrate state={pageProps.dehydratedState}>
-            <Component {...pageProps} />
-          </Hydrate>
-        </QueryClientProvider>
+        <ToastProvider>
+          <QueryClientProvider client={queryClient}>
+            {process.env.NODE_ENV !== "production" && (
+              <ReactQueryDevtools initialIsOpen={false} />
+            )}
+            <Hydrate state={pageProps.dehydratedState}>
+              <Component {...pageProps} />
+            </Hydrate>
+          </QueryClientProvider>
+        </ToastProvider>
       </ThemeProvider>
     </>
   );
