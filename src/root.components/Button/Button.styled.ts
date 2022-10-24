@@ -34,6 +34,7 @@ const defaultButtonStyle = css<ButtonStyleProps>`
         cursor: not-allowed;
         &:active {
           opacity: 1;
+          scale: 1;
         }
         &:after {
           display: none;
@@ -111,6 +112,7 @@ const buttonTransitions = css`
         transition: 0s;
         transition-duration: 0s;
         opacity: 0.85;
+        scale: 0.99;
       }
 
       &:after {
