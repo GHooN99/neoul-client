@@ -6,7 +6,7 @@ export const dims = {
   // 50%
   basic: `${pallete.gray[700]}80`,
   // 15%
-  thin: `${pallete.gray[700]}26`,
+  thin: `${pallete.gray[200]}26`,
 } as const;
 
 export type Dims = typeof dims;

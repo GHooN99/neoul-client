@@ -1,12 +1,26 @@
-interface BaseSnackbarProps {
+import type { ReactNode } from "react";
+
+interface BaseToastProps {
   /**
-   * 스낵바가 열릴때 포탈 DOM 엘리먼트의 ID 값입니다.
-   */
-  id?: string;
-  /**
-   * 스낵바 내부의 메시지 텍스트입니다.
+   * 토스트 내부의 메시지 텍스트입니다.
    */
   message: string;
+  /**
+   * 토스트가 닫힘을 나타냅니다.
+   */
+  onToastClose: () => void;
 }
 
-export interface SnackbarProps extends BaseSnackbarProps {}
+export interface ToastProps extends BaseToastProps {}
+
+export type ToastState = {
+  open: boolean;
+  message: string;
+};
+
+export type ToastContextValue = {
+  openToast: (message: string) => void;
+};
+export interface ToastProviderProps {
+  children: ReactNode;
+}
