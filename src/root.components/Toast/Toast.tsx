@@ -6,7 +6,7 @@ import type { ToastProps } from "./Toast.types";
 /**
  * 토스트 오픈 초 (ms)
  */
-export const TOAST_OPEN_SECOND = 1500;
+export const TOAST_OPEN_SECOND = 1250;
 
 /**
  * 공통 토스트 컴포넌트입니다.
