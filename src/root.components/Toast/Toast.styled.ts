@@ -16,10 +16,10 @@ export const StyledToastWrapper = styled.div<{
   height: 60px;
 
   border-radius: 10px;
-  position: absolute;
-  bottom: 300px;
+  position: fixed;
+  bottom: 10vh;
   margin: 0 auto;
-  background: rgba(40, 40, 40, 0.85);
+  background: rgba(40, 40, 40, 0.8);
 
   padding: 10px;
 
