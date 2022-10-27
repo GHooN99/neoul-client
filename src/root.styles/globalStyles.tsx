@@ -7,6 +7,6 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'NanumSquareRound';
-    background-color: #191919;
+    background-color: #292929;
   }
 `;

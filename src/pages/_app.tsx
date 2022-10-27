@@ -8,6 +8,7 @@ import {
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ToastProvider } from "@components/Toast";
+import AppLayout from "@layouts/screen/AppLayout";
 import "@styles/fonts.css";
 import { GlobalStyles } from "@styles/globalStyles";
 import { theme } from "@styles/theme";
@@ -39,7 +40,9 @@ const MyApp = ({ Component, pageProps }: AppProps<Record<string, unknown>>) => {
               <ReactQueryDevtools initialIsOpen={false} />
             )}
             <Hydrate state={pageProps.dehydratedState}>
-              <Component {...pageProps} />
+              <AppLayout>
+                <Component {...pageProps} />
+              </AppLayout>
             </Hydrate>
           </QueryClientProvider>
         </ToastProvider>
