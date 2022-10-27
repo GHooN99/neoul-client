@@ -3,11 +3,9 @@ import styled from "styled-components";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 import { Modal } from "@components/Modal";
-import { Toast } from "@components/Toast";
-import Typography from "@components/Typography/Typography";
+import { Typography } from "@components/Typography";
 import { useModal } from "@hooks/useModal";
 import { useToast } from "@hooks/useToast";
-import { useTodosQuery } from "../hooks/useTodosQuery";
 
 const ScreenTodo = () => {
   const delay = async () => {
