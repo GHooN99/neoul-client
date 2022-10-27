@@ -12,14 +12,17 @@ const MainPage: NextPage = () => {
   const handleLoginButtonClick = () => {
     router.push("/login");
   };
+
   return (
     <StyledWrapper>
       <div className="logo-image-wrapper">
         <Image src={IMAGE_MAIN_LOGO} width="1500" height="1200" alt="logo" />
       </div>
+
       <Typography className="main-typo" variant="h2" align="center">
         오늘 하루, 어떠셨나요? 🤔
       </Typography>
+
       <Typography className="sub-typo" variant="p" align="center">
         모두와 함께 소중한 하루를 나눠보세요 🐣
       </Typography>
@@ -41,7 +44,8 @@ export default MainPage;
 const StyledWrapper = styled.section`
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+
   .logo-image-wrapper {
     padding: 120px 0 0;
   }
@@ -59,6 +63,7 @@ const StyledWrapper = styled.section`
     animation-fill-mode: forwards;
     animation-delay: 1s;
   }
+
   .login-button {
     position: absolute;
     bottom: 80px;

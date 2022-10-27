@@ -5,8 +5,12 @@ export const GlobalStyles = createGlobalStyle`
   
   ${miniReset}
 
-  body {
+  html,body {
     font-family: 'NanumSquareRound';
     background-color: #292929;
+    height: 100%;
+  }
+  #__next{
+    height: 100%;
   }
 `;
