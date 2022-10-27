@@ -4,6 +4,7 @@ import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 import { Modal } from "@components/Modal";
 import { Toast } from "@components/Toast";
+import Typography from "@components/Typography/Typography";
 import { useModal } from "@hooks/useModal";
 import { useToast } from "@hooks/useToast";
 import { useTodosQuery } from "../hooks/useTodosQuery";
@@ -102,8 +103,7 @@ const ScreenTodo = () => {
             onConfirm={handleClick}
             loading={isLoading}
             title="이 기록을 수정할까요?"
-            description={`기존의 기록은 수정된 기록으로 대체됩니다.
-            그래도 수정할까요?`}
+            description={`기존의 기록은 수정된 기록으로 대체됩니다. 그래도 수정할까요?`}
             cancelText="취소"
             confirmText="수정"
             onClose={closeEditModal}
@@ -115,6 +115,18 @@ const ScreenTodo = () => {
         <Button fullWidth color="red" onClick={openFailToast}>
           실패 메시지 토스트 오픈
         </Button>
+
+        <Typography variant="h2">Typography h2</Typography>
+        <Typography variant="h3" weight="lighter" align="center">
+          Typography h3
+        </Typography>
+        <Typography variant="h3">Typography h3</Typography>
+        <Typography variant="p">Typography p</Typography>
+        <Typography variant="main">Typography main </Typography>
+        <div>
+          <Typography variant="sub1">Typography sub1</Typography>
+        </div>
+        <Typography variant="sub2">Typography sub2</Typography>
       </StyledWrapper>
     </div>
   );
