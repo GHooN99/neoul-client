@@ -1,11 +1,11 @@
 export const fontSize = {
-  sub2: "10px",
-  sub1: "12px",
-  input: "13px",
-  p: "14px",
+  sub2: "12px",
+  sub1: "14px",
+  input: "14px",
+  p: "18px",
   main: "16px",
-  h3: "20px",
-  h2: "24px",
+  h3: "24px",
+  h2: "28px",
 } as const;
 
 export type FontSize = typeof fontSize;

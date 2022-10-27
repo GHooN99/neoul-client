@@ -90,7 +90,7 @@ const buttonSizes = css<ButtonStyleProps>`
 
       case "small":
         return css`
-          font-size: ${fontSize.p};
+          font-size: ${fontSize.main};
           padding: 12px 24px;
           height: 40px;
         `;

@@ -59,7 +59,7 @@ export const StyledModalWrapper = styled.div<{ close: boolean }>`
       white-space: pre-line;
       line-height: 1.6;
       color: ${({ theme }) => theme.texts.sub};
-      font-size: ${({ theme }) => theme.fontSize.p};
+      font-size: ${({ theme }) => theme.fontSize.main};
     }
 
     .button-group {
