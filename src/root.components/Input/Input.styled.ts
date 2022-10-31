@@ -36,13 +36,20 @@ export const StyledInput = styled.input<InputStyleProps>`
       ${({ theme, hasError }) =>
         hasError ? theme.borders.error : theme.borders.focused};
   }
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    border: 1px solid ${({ theme }) => theme.borders.focused};
+  }
 `;
 
 export const StyledErrorMessage = styled.span`
   position: absolute;
-  align-self: flex-end;
+  /* align-self: flex-end; */
+  /* margin-right: 8px; */
+  /* margin-top: 4px; */
   right: 8px;
   bottom: -20px;
   color: ${({ theme }) => theme.texts.error};
-  font-size: ${({ theme }) => theme.fontSize.sub1}; ;
+  font-size: ${({ theme }) => theme.fontSize.sub2}; ;
 `;

@@ -45,6 +45,7 @@ const variantCSSMap: VariantCSSMap = {
 };
 
 export const StyledTypography = styled.div<TypographyProps<VariantType>>`
+  display: block;
   color: ${({ theme }) => theme.texts.main};
   font-weight: ${({ weight }) => weight};
   text-align: ${({ align }) => align};

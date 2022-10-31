@@ -7,7 +7,7 @@ import {
 
 const Typography = <T extends VariantType = "main">({
   variant,
-  align = "left",
+  align,
   children,
   weight = "normal",
   ...restProps

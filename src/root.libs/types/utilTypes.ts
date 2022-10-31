@@ -9,6 +9,7 @@ export type Optional<T> = {
  * keyof 의 value 버전
  */
 export type ValueOf<T> = T[keyof T];
+
 /**
  * T 와 K 의 타입을 중복을 제외하고 합친다.
  */
