@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { css } from "styled-components";
 import type { Combine, ValueOf } from "@libs/types/utilTypes";
 import type { FontSize } from "@styles/texts/fontSize";
@@ -23,9 +23,18 @@ export type VariantCSSMap = Record<VariantType, typeof cssType>;
  * interface x
  */
 export type BaseTypographyProps<T extends VariantType = "main"> = {
-  children: string | number;
+  children: ReactNode;
+  /**
+   * 텍스트의 굵기를 설정합니다.
+   */
   weight?: "bold" | "normal" | "lighter";
+  /**
+   * 텍스트의 정렬 위치를 선택합니다.
+   */
   align?: "left" | "right" | "center";
+  /**
+   * 텍스트의 종류를 지정합니다
+   */
   variant: T;
 };
 
