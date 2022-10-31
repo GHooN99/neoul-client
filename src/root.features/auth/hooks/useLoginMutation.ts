@@ -18,7 +18,7 @@ export const useLoginMutation = () => {
       // set Cookie ?
 
       openToast(LOGIN_SUCCESS_MESSAGE);
-      router.push("/list");
+      router.replace("/list");
     },
     onError: (error) => {
       if (axios.isAxiosError(error)) {
