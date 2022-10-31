@@ -48,6 +48,9 @@ export const miniReset = css`
     margin: 0;
     font-family: inherit;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    &:visited {
+      color: inherit;
+    }
   }
 
   html {
