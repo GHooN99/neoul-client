@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 export interface Api<T> {
   readonly apiClient: T;
@@ -27,9 +27,6 @@ class ApiImpl implements Api<AxiosInstance> {
         return config;
       },
       async (error) => {
-        if (axios.isAxiosError(error)) {
-          console.log("에러다!!!!!");
-        }
         return Promise.reject(error);
       }
     );
@@ -44,14 +41,22 @@ class ApiImpl implements Api<AxiosInstance> {
     url: string,
     data?: TVariables
   ) {
-    return this.apiClient.post<TVariables, TData>(url, data);
+    const response = await this.apiClient.post<
+      TVariables,
+      AxiosResponse<TData>
+    >(url, data);
+    return response.data;
   }
 
   async PUT<TVariables = unknown, TData = unknown>(
     url: string,
     data?: TVariables
   ) {
-    return this.apiClient.put<TVariables, TData>(url, data);
+    const response = await this.apiClient.put<TVariables, AxiosResponse<TData>>(
+      url,
+      data
+    );
+    return response.data;
   }
 
   async DELETE<TData = unknown>(url: string) {

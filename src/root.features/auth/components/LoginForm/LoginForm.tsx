@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { FormEvent, useRef, useState } from "react";
+import type { FormEvent } from "react";
 import styled from "styled-components";
 import { Button } from "@components/Button";
 import { Input } from "@components/Input";
 import { Typography } from "@components/Typography";
+import { useLoginMutation } from "@features/auth/hooks/useLoginMutation";
 import {
   EMAIL_VALID_PATTERN,
   PASSWORD_MIN_LENGTH,
@@ -38,28 +39,34 @@ const LoginForm = () => {
   const [email, setEmail] = useInput("");
   const [password, setPassword] = useInput("");
 
+  const loginMutation = useLoginMutation();
+
   const { value: isFirstSubmit, setFalse: setFirstSubmitFalse } =
     useBoolean(true);
 
-  const isLoading = false;
+  const isMutationLoading = loginMutation.isLoading;
 
   const isValidEmail = EMAIL_VALID_PATTERN.test(email);
   const isValidPassword = password.length >= PASSWORD_MIN_LENGTH;
 
   const isValidInputs = isValidEmail && isValidPassword;
-  const isSubmitButtonDisable = !isValidInputs || isLoading;
+  const isSubmitButtonDisable = !isValidInputs || isMutationLoading;
 
   const handleLoginFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (isFirstSubmit) setFirstSubmitFalse();
+    if (isFirstSubmit) {
+      setFirstSubmitFalse();
+    }
+
     if (!isValidInputs) {
       return;
     }
-    console.log(email, password);
-    // mutate({
 
-    // })
+    loginMutation.mutate({
+      email,
+      password,
+    });
   };
 
   /**
@@ -97,7 +104,7 @@ const LoginForm = () => {
         type="submit"
         fullWidth
         disabled={!isFirstSubmit && isSubmitButtonDisable}
-        loading={false}
+        loading={isMutationLoading}
       >
         로그인
       </Button>
