@@ -42,7 +42,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const queryClient = new QueryClient();
   authService.setAuthToken(authToken);
-  await queryClient.fetchQuery(todoKeys.lists(), todoService.getAllTodos);
+  await queryClient.prefetchQuery(todoKeys.lists(), todoService.getAllTodos);
 
   return {
     props: {
