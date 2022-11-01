@@ -12,6 +12,6 @@ export const GlobalStyles = createGlobalStyle`
     height: 100%;
   }
   #__next{
-    height: 100%;
+    height: 100%;   
   }
 `;
