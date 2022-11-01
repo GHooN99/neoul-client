@@ -5,7 +5,6 @@ import { Input } from "@components/Input";
 import { Modal } from "@components/Modal";
 import { Typography } from "@components/Typography";
 import { useModal } from "@hooks/useModal";
-import { useToast } from "@hooks/useToast";
 
 const ScreenTodo = () => {
   const delay = async () => {
@@ -19,8 +18,8 @@ const ScreenTodo = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, openModal, closeModal] = useModal();
   const [isEditOpen, openEditModal, closeEditModal] = useModal();
-  const openSuccessToast = useToast("✅ 성공적으로 수정되었습니다.");
-  const openFailToast = useToast("⚠️ 문제가 발생했습니다. 다시시도해주세요.");
+  // const openSuccessToast = useToast("✅ 성공적으로 수정되었습니다.");
+  // const openFailToast = useToast("⚠️ 문제가 발생했습니다. 다시시도해주세요.");
 
   const handleClick = async () => {
     setIsLoading(true);
@@ -107,12 +106,6 @@ const ScreenTodo = () => {
             onClose={closeEditModal}
           />
         )}
-        <Button fullWidth onClick={openSuccessToast}>
-          성공 메시지 토스트 오픈
-        </Button>
-        <Button fullWidth color="red" onClick={openFailToast}>
-          실패 메시지 토스트 오픈
-        </Button>
 
         <Typography variant="h2">Typography h2</Typography>
         <Typography variant="h3" weight="lighter" align="center">
