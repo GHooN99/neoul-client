@@ -5,12 +5,13 @@ import styled from "styled-components";
 import { Button } from "@components/Button";
 import { Typography } from "@components/Typography";
 import { IMAGE_MAIN_LOGO } from "@libs/constants/assetsPath";
+import { PagePath } from "@libs/constants/pagePath";
 import { fadeIn } from "@styles/keyframes/fades";
 
 const MainPage: NextPage = () => {
   const router = useRouter();
   const handleLoginButtonClick = () => {
-    router.push("/login");
+    router.push(PagePath.LOGIN);
   };
 
   return (

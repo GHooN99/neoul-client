@@ -7,3 +7,7 @@ export interface Todo {
 }
 
 export type TodoInput = Pick<Todo, "title" | "content">;
+
+export type TodoResponse<T> = {
+  data: T;
+};

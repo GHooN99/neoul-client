@@ -1,20 +1,24 @@
 import { API } from "@remotes/apiClient";
-import { Todo, TodoInput } from "./todos.types";
+import type { Todo, TodoInput, TodoResponse } from "./todos.types";
 
 export const todosService = {
   path: "posts" as const,
 
-  getAllTodos: async () => API.GET<Todo[]>(`${todosService.path}`),
+  getAllTodos: async () => {
+    const response = await API.GET<TodoResponse<Todo[]>>(
+      `${todosService.path}`
+    );
+    return response.data;
+  },
+  getTodoDetail: (id: number) => async () =>
+    API.GET<TodoResponse<Todo>>(`${todosService.path}/${id}`),
 
-  getTodoDetail: (id: number) => () =>
-    API.GET<Todo>(`${todosService.path}/${id}`),
+  createTodo: (input: TodoInput) => async () =>
+    API.POST<TodoInput, TodoResponse<Todo>>(`${todosService.path}`, input),
 
-  createTodo: (input: TodoInput) => () =>
-    API.POST<TodoInput, Todo>(`${todosService.path}`, input),
+  editTodo: (id: number, input: TodoInput) => async () =>
+    API.PUT<TodoInput, TodoResponse<Todo>>(`${todosService.path}/${id}`, input),
 
-  editTodo: (id: number, input: TodoInput) => () =>
-    API.PUT<TodoInput, Todo>(`${todosService.path}/${id}`, input),
-
-  deleteTodo: (id: number) => () =>
-    API.DELETE<Todo>(`${todosService.path}/${id}`),
+  deleteTodo: (id: number) => async () =>
+    API.DELETE<TodoResponse<Todo>>(`${todosService.path}/${id}`),
 };

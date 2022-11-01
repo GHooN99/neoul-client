@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
-import ScreenLogin from "@features/auth/screen/ScreenLogin";
+import ScreenJoin from "@features/auth/screen/ScreenJoin";
 
-const LoginPage: NextPage = () => {
-  return <ScreenLogin />;
+const JoinPage: NextPage = () => {
+  return <ScreenJoin />;
 };
 
-export default LoginPage;
+export default JoinPage;
