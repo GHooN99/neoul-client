@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 export interface Api<T> {
   readonly apiClient: T;
-
+  setAuthToken(token: string): void;
   GET<TData = unknown>(url: string): Promise<TData>;
   POST<TVariables = unknown, TData = unknown>(
     url: string,
@@ -16,20 +16,19 @@ export interface Api<T> {
 }
 
 class ApiImpl implements Api<AxiosInstance> {
+  private authToken = "";
   constructor(public readonly apiClient: AxiosInstance) {
     // interceptors
-    this.apiClient.interceptors.request.use(
-      (config) => {
-        const token = "";
-        if (token) {
-          config.headers!["Authorization"] = `Bearer ${token}`;
-        }
-        return config;
-      },
-      async (error) => {
-        return Promise.reject(error);
+    this.apiClient.interceptors.request.use((config) => {
+      if (this.authToken && config.headers) {
+        config.headers["Authorization"] = `Bearer ${this.authToken}`;
       }
-    );
+      return config;
+    });
+  }
+
+  setAuthToken(token: string) {
+    this.authToken = token;
   }
 
   async GET<TData = unknown>(url: string) {

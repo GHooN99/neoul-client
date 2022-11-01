@@ -9,6 +9,8 @@ export const authService = {
 
   signUp: () => async (userInput: UserInput) =>
     API.POST<UserInput, AuthResponse>(`${authService.path}/create`, userInput),
+
+  setAuthToken: (token: string) => API.setAuthToken(token),
   /*
   signOut: () => () => {},
   */

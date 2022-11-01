@@ -11,3 +11,7 @@ export interface AuthResponse {
   message: string;
   token: string;
 }
+
+export interface JoinErrorResponse {
+  details: string;
+}
