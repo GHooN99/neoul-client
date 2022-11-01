@@ -31,7 +31,7 @@ const Greeting = ({ page }: GreetringProps) => {
 export default Greeting;
 
 const StyledWrapper = styled.div`
-  padding: 200px 0 50px;
+  padding: 180px 0 50px;
   .project-name {
     color: ${({ theme }) => theme.texts.primary};
   }
