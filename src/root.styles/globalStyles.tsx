@@ -9,9 +9,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'NanumSquareRound';
     background-color: #292929;
     color:#E9ECEF;
-    height: 100%;
+
   }
-  #__next{
-    height: 100%;   
-  }
+
 `;

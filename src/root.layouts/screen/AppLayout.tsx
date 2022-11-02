@@ -12,9 +12,14 @@ const AppLayout = ({ children }: AppLayoutProps) => {
 export default AppLayout;
 
 const StyledWrapper = styled.main`
-  touch-action: none;
+  & > section {
+    height: inherit;
+    min-height: inherit;
+  }
+
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 550px;
+  min-height: 100vh;
   height: 100%;
   padding: 0 30px;
   background-color: ${({ theme }) => theme.backgrounds.base};
