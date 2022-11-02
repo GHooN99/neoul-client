@@ -47,7 +47,11 @@ export const miniReset = css`
   a {
     margin: 0;
     font-family: inherit;
+    color: inherit;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    &:visited {
+      color: inherit;
+    }
   }
 
   html {

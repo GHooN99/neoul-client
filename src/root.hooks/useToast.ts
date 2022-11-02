@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ToastContext } from "@components/Toast";
 
-type UseToastHookResult = () => void;
+type UseToastHookResult = (message: string) => void;
 
 /**
  * useToast Hook
@@ -11,10 +11,11 @@ type UseToastHookResult = () => void;
  * ToastProvider 내부의 컴포넌트에서 호출 가능합니다
  * @example
  * ```tsx
- *   const openToast = useToast("message");
+ *   const openToast = useToast();
+ *   openToast("message");
  * ```
  */
-export const useToast = (message: string): UseToastHookResult => {
+export const useToast = (): UseToastHookResult => {
   const contextValue = useContext(ToastContext);
 
   if (contextValue === null) {
@@ -23,5 +24,5 @@ export const useToast = (message: string): UseToastHookResult => {
 
   const { openToast } = contextValue;
 
-  return () => openToast(message);
+  return (message: string) => openToast(message);
 };

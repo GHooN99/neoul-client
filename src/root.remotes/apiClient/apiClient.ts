@@ -1,8 +1,8 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 export interface Api<T> {
   readonly apiClient: T;
-
+  setAuthToken(token: string): void;
   GET<TData = unknown>(url: string): Promise<TData>;
   POST<TVariables = unknown, TData = unknown>(
     url: string,
@@ -16,23 +16,19 @@ export interface Api<T> {
 }
 
 class ApiImpl implements Api<AxiosInstance> {
+  private authToken = "";
   constructor(public readonly apiClient: AxiosInstance) {
     // interceptors
-    this.apiClient.interceptors.request.use(
-      (config) => {
-        const token = "";
-        if (token) {
-          config.headers!["Authorization"] = `Bearer ${token}`;
-        }
-        return config;
-      },
-      async (error) => {
-        if (axios.isAxiosError(error)) {
-          console.log("에러다!!!!!");
-        }
-        return Promise.reject(error);
+    this.apiClient.interceptors.request.use((config) => {
+      if (this.authToken && config.headers) {
+        config.headers["Authorization"] = `Bearer ${this.authToken}`;
       }
-    );
+      return config;
+    });
+  }
+
+  setAuthToken(token: string) {
+    this.authToken = token;
   }
 
   async GET<TData = unknown>(url: string) {
@@ -44,14 +40,22 @@ class ApiImpl implements Api<AxiosInstance> {
     url: string,
     data?: TVariables
   ) {
-    return this.apiClient.post<TVariables, TData>(url, data);
+    const response = await this.apiClient.post<
+      TVariables,
+      AxiosResponse<TData>
+    >(url, data);
+    return response.data;
   }
 
   async PUT<TVariables = unknown, TData = unknown>(
     url: string,
     data?: TVariables
   ) {
-    return this.apiClient.put<TVariables, TData>(url, data);
+    const response = await this.apiClient.put<TVariables, AxiosResponse<TData>>(
+      url,
+      data
+    );
+    return response.data;
   }
 
   async DELETE<TData = unknown>(url: string) {

@@ -34,6 +34,7 @@ class MyDocument extends Document {
       <Html lang="ko">
         <Head>
           <meta charSet="UTF-8" />
+          <meta name="theme-color" content="#191919" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
           {this.props.styles}
