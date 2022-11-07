@@ -29,6 +29,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   const queryClient = new QueryClient();
   authService.setAuthToken(authToken);
+
   await queryClient.prefetchQuery(postKeys.lists(), postService.getAllPosts());
 
   return {

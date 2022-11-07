@@ -3,10 +3,11 @@ import styled from "styled-components";
 
 interface AppHeaderProps {
   children: ReactNode;
+  className?: string;
 }
 
-const AppHeader = ({ children }: AppHeaderProps) => {
-  return <StyledHeader>{children}</StyledHeader>;
+const AppHeader = ({ children, className }: AppHeaderProps) => {
+  return <StyledHeader className={className}>{children}</StyledHeader>;
 };
 
 export default AppHeader;

@@ -19,6 +19,9 @@ export type ToastState = {
 };
 
 export type ToastContextValue = {
+  /**
+   *  토스트 팝업을 여는 함수입니다.
+   */
   openToast: (message: string) => void;
 };
 export interface ToastProviderProps {
