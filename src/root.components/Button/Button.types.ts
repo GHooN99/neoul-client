@@ -6,7 +6,14 @@ export type ButtonSize = "small" | "regular";
 
 export interface BaseButtonProps
   extends Omit<ComponentPropsWithoutRef<"button">, "color"> {
+  /**
+   * 버튼의 내용을 입력합니다.
+   */
   children: ReactNode;
+  /**
+   * 버튼의 로딩 상태를 지정합니다.
+   * @defaultValue false
+   */
   loading?: boolean;
 }
 
@@ -19,6 +26,7 @@ export interface ButtonStyleProps {
 
   /**
    * 버튼의 full width 여부를 지정합니다.
+   * @defaultValue false
    */
   fullWidth?: boolean;
 
