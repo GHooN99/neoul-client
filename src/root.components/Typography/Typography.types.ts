@@ -23,6 +23,9 @@ export type VariantCSSMap = Record<VariantType, typeof cssType>;
  * interface x
  */
 export type BaseTypographyProps<T extends VariantType = "main"> = {
+  /**
+   * 텍스트의 내용을 설정합니다.
+   */
   children: ReactNode;
   /**
    * 텍스트의 굵기를 설정합니다.
