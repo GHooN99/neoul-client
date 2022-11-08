@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "../src/root.components/Button";
 
-export const Welcome = () => {
+export const Home = () => {
   const handleClickGithubPage = () => {
     window.open("https://github.com/ghoon99/neoul-client", "_blank");
   };
@@ -15,10 +15,10 @@ export const Welcome = () => {
         width={250}
         height={250}
       />
-      <h1 className="welcome-message">Welcome Neoul Component Docs ✨</h1>
+      <h1 className="welcome-message">Neoul Component Docs ✨</h1>
       <p className="description">
         Neoul에서 사용하는 컴포넌트를 정리한 storybook 페이지입니다.
-        <br />각 story의 Docs에 컴포넌트 데모와 props에 대한 설명을 확인할 수
+        <br />각 story Docs 탭에 컴포넌트 데모와 props에 대한 설명을 확인할 수
         있습니다.
       </p>
       <div className="buttons">
@@ -26,7 +26,7 @@ export const Welcome = () => {
           Github
         </Button>
         <Button color="transparent" onClick={() => {}}>
-          Page
+          Service Page
         </Button>
       </div>
     </StyledWrapper>
@@ -34,10 +34,10 @@ export const Welcome = () => {
 };
 
 export default {
-  title: "Welcome",
-  component: Welcome,
+  title: "Home",
+  component: Home,
   parameters: {
-    viewMode: "canvas",
+    viewMode: "Story",
     previewTabs: {
       "storybook/docs/panel": { hidden: true },
     },
