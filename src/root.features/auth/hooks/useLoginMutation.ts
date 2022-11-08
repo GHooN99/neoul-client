@@ -18,7 +18,6 @@ export const useLoginMutation = () => {
 
   return useMutation(authService.signIn(), {
     onSuccess: (response) => {
-      console.log(response.token);
       authService.setAuthToken(response.token);
       setCookie(AUTH_COOKIE_KEY, response.token, {
         path: "/",
@@ -27,6 +26,7 @@ export const useLoginMutation = () => {
       openToast(LOGIN_SUCCESS_MESSAGE);
       router.replace(PagePath.LIST);
     },
+
     onError: (error) => {
       if (axios.isAxiosError(error)) {
         openToast(LOGIN_ERROR_MESSAGE);

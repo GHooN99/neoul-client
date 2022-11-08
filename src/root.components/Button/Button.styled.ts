@@ -70,6 +70,11 @@ const buttonColors = css<ButtonStyleProps>`
           color: ${texts.main};
           background-color: ${buttons.red};
         `;
+      case "transparent":
+        return css`
+          color: ${texts.main};
+          background-color: transparent;
+        `;
       default:
         throw new Error("정확한 사이즈 값을 입력해주세요.");
     }

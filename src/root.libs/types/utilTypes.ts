@@ -1,11 +1,4 @@
 /**
- * example @type Optional
- */
-export type Optional<T> = {
-  [K in keyof T]?: T[K];
-};
-
-/**
  * keyof 의 value 버전
  */
 export type ValueOf<T> = T[keyof T];
