@@ -1,90 +1,20 @@
 import styled from "styled-components";
-import { useQuery } from "@tanstack/react-query";
-import { useToast } from "@hooks/useToast";
-import type { Post } from "@remotes/post";
-import { postKeys } from "@remotes/post/post.keys";
-import { postService } from "@remotes/post/post.service";
+import { PageError } from "@components/PageError";
+import { usePostListQuery } from "@features/post/hooks/usePostListQuery";
+import { API } from "@remotes/apiClient";
 import PostListItem from "./PostListItem";
 
-const posts: Post[] = [
-  {
-    id: "123",
-    content: "1213",
-    title: "안녕",
-    status: "😆",
-    createdAt: "23",
-    updatedAt: "23",
-  },
-  {
-    id: "123",
-    content: "1213",
-    title: "안녕",
-    status: "😆",
-    createdAt: "23",
-    updatedAt: "23",
-  },
-  {
-    id: "123",
-    content: "1213",
-    title: "안녕",
-    status: "😆",
-    createdAt: "23",
-    updatedAt: "23",
-  },
-  {
-    id: "123",
-    content: "1213",
-    title: "안녕",
-    status: "😆",
-    createdAt: "23",
-    updatedAt: "23",
-  },
-  {
-    id: "123",
-    content: "1213",
-    title: "안녕",
-    status: "😆",
-    createdAt: "23",
-    updatedAt: "23",
-  },
-  {
-    id: "123",
-    content: "1213",
-    title: "안녕",
-    status: "😆",
-    createdAt: "23",
-    updatedAt: "23",
-  },
-  {
-    id: "123",
-    content: "1213",
-    title: "안녕",
-    status: "😆",
-    createdAt: "23",
-    updatedAt: "23",
-  },
-  {
-    id: "123",
-    content: "1213",
-    title: "안녕",
-    status: "😆",
-    createdAt: "23",
-    updatedAt: "23",
-  },
-  {
-    id: "123",
-    content: "1213",
-    title: "안녕",
-    status: "😆",
-    createdAt: "23",
-    updatedAt: "23",
-  },
-];
-
 const PostList = () => {
+  const { isError, data } = usePostListQuery();
+  console.log(API);
+  // prefetch 된 데이터이기 때문에 loading 이 없음
+  const posts = data ?? [];
+
+  if (isError) return <PageError />;
+
   return (
     <StyledWrapper>
-      {posts!.map((post) => (
+      {posts.map((post) => (
         <PostListItem key={post.id} post={post} />
       ))}
     </StyledWrapper>

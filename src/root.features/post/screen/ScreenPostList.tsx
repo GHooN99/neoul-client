@@ -1,11 +1,10 @@
 import { useRouter } from "next/router";
-import { Suspense } from "react";
 import styled from "styled-components";
 import { Button } from "@components/Button";
 import { Typography } from "@components/Typography";
 import { AppHeader } from "@layouts/components/AppHeader";
 import { PagePath } from "@libs/constants/pagePath";
-import { PostList, PostListLoading } from "../components/PostList";
+import { PostList } from "../components/PostList";
 
 const ScreenPostList = () => {
   const router = useRouter();
@@ -21,11 +20,8 @@ const ScreenPostList = () => {
         모두의 하루를 구경해보세요 📓
       </Typography>
 
-      {/* Todo ErrorBoundary */}
-      {/* <PostListErrorBoundary> */}
-      {/* <Suspense fallback={<PostListLoading />}> */}
+      {/* Todo ErrorBoundary & Suspense*/}
       <PostList />
-      {/* </Suspense> */}
 
       <Button
         className="create-button"
@@ -34,7 +30,6 @@ const ScreenPostList = () => {
       >
         나도 작성하기
       </Button>
-      {/* </PostListErrorBoundary> */}
     </StyledWrapper>
   );
 };
@@ -48,9 +43,11 @@ const StyledWrapper = styled.section`
   .post-list-header {
     color: ${({ theme }) => theme.texts.primary};
   }
+
   .message {
     padding: 90px 0 20px;
   }
+
   .create-button {
     position: fixed;
     max-width: 550px;

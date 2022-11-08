@@ -27,6 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   }
 
+  // prefetch
   const queryClient = new QueryClient();
   authService.setAuthToken(authToken);
 
