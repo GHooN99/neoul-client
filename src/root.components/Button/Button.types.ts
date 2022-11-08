@@ -26,7 +26,7 @@ export interface ButtonStyleProps {
    * 버튼의 메인 색을 지정합니다.
    * @defaultValue "main"
    */
-  color?: color;
+  color?: color | "transparent";
 }
 
 export interface ButtonProps extends BaseButtonProps, ButtonStyleProps {}
