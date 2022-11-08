@@ -32,9 +32,9 @@ const Template: ComponentStory<typeof Button> = (args) => (
   </StyledWrapper>
 );
 
-export const Main = Template.bind({});
+export const Example = Template.bind({});
 
-Main.args = {
+Example.args = {
   color: "main",
   children: "메인 버튼",
 };
@@ -44,6 +44,6 @@ const StyledWrapper = styled.div`
   width: 100%;
   flex-wrap: wrap;
   & > :not(:last-child) {
-    margin-right: 20px;
+    margin-right: 30px;
   }
 `;
