@@ -6,10 +6,10 @@ import "../src/root.styles/fonts.css";
 import { GlobalStyles } from "../src/root.styles/globalStyles";
 import { theme } from "../src/root.styles/theme";
 
-addDecorator((story) => (
+addDecorator((Story) => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <ToastProvider>{story()}</ToastProvider>
+    <Story />
   </ThemeProvider>
 ));
 
@@ -20,7 +20,7 @@ export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   options: {
     storySort: {
-      order: ["Welcome", "Colors", "Components", "*"],
+      order: ["Home", "Colors", "Components", "*"],
     },
   },
   previewTabs: {

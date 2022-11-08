@@ -3,7 +3,8 @@ const path = require("path");
 
 module.exports = {
   stories: [
-    "./Welcome.tsx",
+    "./Home.tsx",
+    "./Colors.tsx",
     "../src/**/*.stories.mdx",
     "../src/**/*.stories.@(js|jsx|ts|tsx)",
   ],
