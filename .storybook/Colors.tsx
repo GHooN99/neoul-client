@@ -17,6 +17,7 @@ export const Pallete = () => {
 
   return (
     <StyledWrapper>
+      <h1 className="title">Neoul 에서 사용하는 색상 목록입니다.</h1>
       <h1 className="title">gray scale</h1>
       <div className="color-scale">
         {Object.keys(grayScale).map((key, index) => (
