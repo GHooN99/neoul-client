@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useMutation } from "@tanstack/react-query";
 import { useToast } from "@hooks/useToast";
 import { UNKNOWN_ERROR_MESSAGE } from "@libs/constants/ErrorMessage";
-import { AUTH_COOKIE_KEY } from "@libs/constants/cookies";
+import { AUTH_COOKIE_KEY, AUTH_COOKIE_MAX_AGE } from "@libs/constants/cookies";
 import { PagePath } from "@libs/constants/pagePath";
 import { setCookie } from "@libs/utils/cookies";
 import { authService } from "@remotes/auth/auth.service";
@@ -22,6 +22,7 @@ export const useLoginMutation = () => {
       setCookie(AUTH_COOKIE_KEY, response.token, {
         path: "/",
         secure: true,
+        maxAge: AUTH_COOKIE_MAX_AGE,
       });
       openToast(LOGIN_SUCCESS_MESSAGE);
       router.replace(PagePath.LIST);
