@@ -5,13 +5,12 @@ import { API } from "@remotes/apiClient";
 import PostListItem from "./PostListItem";
 
 const PostList = () => {
-  const { isError, data } = usePostListQuery();
-  console.log(API);
-  // prefetch 된 데이터이기 때문에 loading 이 없음
+  const { isError, data, isLoading } = usePostListQuery();
+
   const posts = data ?? [];
 
   if (isError) return <PageError />;
-
+  if (isLoading) return <>fetching</>;
   return (
     <StyledWrapper>
       {posts.map((post) => (

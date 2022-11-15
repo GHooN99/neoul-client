@@ -1,7 +1,10 @@
-import type { AppProps } from "next/app";
+import cookies from "next-cookies";
+import type { AppContext, AppProps } from "next/app";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
 import {
+  type DehydratedState,
   Hydrate,
   QueryClient,
   QueryClientProvider,
@@ -9,22 +12,36 @@ import {
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ToastProvider } from "@components/Toast";
 import AppLayout from "@layouts/screen/AppLayout";
+import { authService } from "@remotes/auth/auth.service";
 import "@styles/fonts.css";
 import { GlobalStyles } from "@styles/globalStyles";
 import { theme } from "@styles/theme";
+import { API } from "@remotes/apiClient";
+import { AUTH_COOKIE_KEY } from "@libs/constants/cookies";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false,
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchIntervalInBackground: false,
-    },
-  },
-});
+interface AppPageProps {
+  authToken?: string;
+  dehydratedState: DehydratedState;
+}
 
-const MyApp = ({ Component, pageProps }: AppProps<Record<string, unknown>>) => {
+const NeoulApp = ({ Component, pageProps }: AppProps<AppPageProps>) => {
+  const [queryClient] = useState(
+    new QueryClient({
+      defaultOptions: {
+        queries: {
+          retry: false,
+          refetchOnWindowFocus: false,
+          refetchIntervalInBackground: false,
+        },
+      },
+    })
+  );
+
+  console.log(pageProps)
+  useEffect(() => {
+    if (pageProps.authToken) authService.setAuthToken(pageProps.authToken);
+  }, [pageProps.authToken]);
+
   return (
     <>
       <Head>
@@ -54,4 +71,20 @@ const MyApp = ({ Component, pageProps }: AppProps<Record<string, unknown>>) => {
   );
 };
 
-export default MyApp;
+export default NeoulApp;
+
+NeoulApp.getInitialProps = async ({ Component, ctx }: AppContext) => {
+  let pageProps = {}
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx)
+  }
+
+  const allCookies = cookies(ctx);
+  const authToken = allCookies[AUTH_COOKIE_KEY];
+  return {
+    pageProps:{
+      ...pageProps,
+      authToken,
+    }
+  }
+}

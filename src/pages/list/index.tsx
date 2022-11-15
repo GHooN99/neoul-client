@@ -1,5 +1,6 @@
 import cookies from "next-cookies";
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
+import Router from "next/router";
 import { QueryClient, dehydrate } from "@tanstack/react-query";
 import ScreenPostList from "@features/post/screen/ScreenPostList";
 import { AUTH_COOKIE_KEY } from "@libs/constants/cookies";
@@ -14,28 +15,33 @@ const PostListPage: NextPage = () => {
 
 export default PostListPage;
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+PostListPage.getInitialProps = async (ctx) => {
   const allCookies = cookies(ctx);
   const authToken = allCookies[AUTH_COOKIE_KEY];
 
-  if (!authToken) {
+  // server side
+  if (ctx.res) {
+    if (!authToken) {
+      ctx.res.writeHead(307, { Location: PagePath.LOGIN });
+      ctx.res.end();
+      return {};
+    }
+
+    const queryClient = new QueryClient();
+    authService.setAuthToken(authToken);
+
+    await queryClient.prefetchQuery(
+      postKeys.lists(),
+      postService.getAllPosts()
+    );
+
     return {
-      redirect: {
-        statusCode: 307,
-        destination: PagePath.LOGIN,
-      },
+      dehydratedState: dehydrate(queryClient),
     };
   }
-
-  // prefetch
-  const queryClient = new QueryClient();
-  authService.setAuthToken(authToken);
-
-  await queryClient.prefetchQuery(postKeys.lists(), postService.getAllPosts());
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
+  // client side
+  if (!authToken) {
+    Router.replace(PagePath.LOGIN);
+  }
+  return {};
 };

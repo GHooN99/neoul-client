@@ -1,5 +1,6 @@
 import cookies from "next-cookies";
-import type { GetServerSideProps, NextPage } from "next";
+import type { NextPage } from "next";
+import Router from "next/router";
 import ScreenLogin from "@features/auth/screen/ScreenLogin";
 import { AUTH_COOKIE_KEY } from "@libs/constants/cookies";
 import { PagePath } from "@libs/constants/pagePath";
@@ -10,20 +11,24 @@ const LoginPage: NextPage = () => {
 
 export default LoginPage;
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+LoginPage.getInitialProps = async (ctx) => {
   const allCookies = cookies(ctx);
   const authToken = allCookies[AUTH_COOKIE_KEY];
-  console.log(ctx);
+
   if (authToken) {
+    if (ctx.res) {
+      ctx.res.writeHead(307, { Location: PagePath.LIST });
+      ctx.res.end();
+      return {
+        authToken,
+      };
+    }
+
+    Router.replace(PagePath.LIST);
     return {
-      redirect: {
-        statusCode: 307,
-        destination: PagePath.LIST,
-      },
+      authToken,
     };
   }
 
-  return {
-    props: {},
-  };
+  return {};
 };
