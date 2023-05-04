@@ -21,22 +21,21 @@ jobs:
             echo "No action taken. Target branch is not 'develop' or 'release/*'."
             exit 0
           fi
-
-          echo "::set-output name=labels::$LABELS"
+          echo "lables=$LABELS" >> $GITHUB_OUTPUT
 
       - name: Add labels to PR
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const labels = core.getInput('labels').split(",");
+            const labels = core.getInput('labels');
             console.log("labels",labels);
             const issue_number = context.payload.pull_request.number;
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue_number,
-              labels: ["hi"]
+              labels: ["develop"]
             });
         env:
           labels: ${{ steps.check-label.outputs.labels }}
