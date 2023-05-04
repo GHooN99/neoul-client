@@ -8,7 +8,8 @@ jobs:
   label-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: T
+      - name: check-label
+        id: check-label
         run: |
           TARGET_BRANCH=$(echo "${{ github.event.pull_request.base.ref }}" | awk -F'/' '{print $1}')
           if [ "$TARGET_BRANCH" = "develop" ]; then
@@ -40,4 +41,4 @@ jobs:
               labels: ["develop"]
             });
         env:
-          labels: ${{ steps.T.outputs.labels }}
+          labels: ${{ steps.check-label.outputs.labels }}
