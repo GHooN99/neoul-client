@@ -12,17 +12,8 @@ jobs:
         id: check-label
         run: |
           TARGET_BRANCH=$(echo "${{ github.event.pull_request.base.ref }}" | awk -F'/' '{print $1}')
-          if [ "$TARGET_BRANCH" = "develop" ]; then
-            echo "Labeling PR as 'develop'"
-            LABELS="develop"
-          elif [ "${TARGET_BRANCH:0:7}" = "release" ]; then
-            echo "Labeling PR as 'staging'"
-            LABELS="staging"
-          else
-            echo "No action taken. Target branch is not 'develop' or 'release/*'."
-            exit 0
-          fi
-          echo "$LABELS"
+          LABELS="$TARGET_BRANCH"
+         
           echo "labels=$LABELS" >> $GITHUB_OUTPUT
 
       - name: Add labels to PR
