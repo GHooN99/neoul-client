@@ -29,9 +29,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-
-            const labels = ${{ steps.step-id.outputs.output-name }};
-            console.log("lable?",labels);
+            const labels = core.getInput('labels').split(",");
             const issue_number = context.payload.pull_request.number;
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
