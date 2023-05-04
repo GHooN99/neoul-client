@@ -8,7 +8,7 @@ jobs:
   label-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Check target branch
+      - name: T
         run: |
           TARGET_BRANCH=$(echo "${{ github.event.pull_request.base.ref }}" | awk -F'/' '{print $1}')
           if [ "$TARGET_BRANCH" = "develop" ]; then
@@ -21,6 +21,7 @@ jobs:
             echo "No action taken. Target branch is not 'develop' or 'release/*'."
             exit 0
           fi
+          echo "$LABELS"
           echo "labels=$LABELS" >> $GITHUB_OUTPUT
 
       - name: Add labels to PR
@@ -39,4 +40,4 @@ jobs:
               labels: ["develop"]
             });
         env:
-          labels: ${{ steps.check-label.outputs.labels }}
+          labels: ${{ steps.T.outputs.labels }}
