@@ -8,33 +8,20 @@ jobs:
   label-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Check target branch
-        run: |
-          TARGET_BRANCH=$(echo "${{ github.event.pull_request.base.ref }}" | awk -F'/' '{print $1}')
-          if [ "$TARGET_BRANCH" = "develop" ]; then
-            echo "Labeling PR as 'develop'"
-            LABELS="develop"
-          elif [ "${TARGET_BRANCH:0:7}" = "release" ]; then
-            echo "Labeling PR as 'staging'"
-            LABELS="staging"
-          else
-            echo "No action taken. Target branch is not 'develop' or 'release/*'."
-            exit 0
-          fi
-          echo "::set-output name=labels::$LABELS"
-          echo "{labels}={$LABELS}" >> $GITHUB_OUTPUT
       - name: Add labels to PR
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const labels = [core.getState('labels')]
-            console.log("labels:",labels)
+            const branch = await github.rest.repos.getBranch({
+             ...context.repo,
+            })
+            console.log("labels:",branch)
             const issue_number = context.payload.pull_request.number;
             await github.rest.issues.addLabels({
               ...context.repo,
               issue_number,
-              labels,
+              labels:["hello"],
             });
         env:
           labels: ${{ steps.check-label.outputs.labels }}
