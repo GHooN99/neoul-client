@@ -22,13 +22,14 @@ jobs:
             exit 0
           fi
           echo "::set-output name=labels::$LABELS"
+          echo "{labels}={$LABELS}" >> $GITHUB_OUTPUT
       - name: Add labels to PR
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const labels = [core.getInput('labels')]
-            console.log(labels)
+            const labels = [core.getState('labels')]
+            console.log("labels:",labels)
             const issue_number = context.payload.pull_request.number;
             await github.rest.issues.addLabels({
               ...context.repo,
