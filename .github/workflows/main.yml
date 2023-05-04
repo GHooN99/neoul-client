@@ -38,7 +38,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issue_number,
-              labels: ["develop"]
+              labels: [labels]
             });
         env:
           labels: ${{ steps.check-label.outputs.labels }}
