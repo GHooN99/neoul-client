@@ -27,13 +27,12 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const labels = core.getInput('labels').split(",");
+            const labels = core.getInput('labels')
             const issue_number = context.payload.pull_request.number;
             await github.rest.issues.addLabels({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: issue_number,
-              labels: labels
+              ...context.repo,
+              issue_number,
+              labels,
             });
         env:
           labels: ${{ steps.check-label.outputs.labels }}
