@@ -27,7 +27,8 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const labels = core.getInput('labels')
+            const labels = [core.getInput('labels')]
+            console.log(labels)
             const issue_number = context.payload.pull_request.number;
             await github.rest.issues.addLabels({
               ...context.repo,
