@@ -5,11 +5,11 @@ on:
     types: [opened, reopened]
 
 jobs:
-  label-pr:
+  Add-Label-To-PR:
     runs-on: ubuntu-latest
     steps:
-      - name: check-label
-        id: check-label
+      - name: Get PR Target Branch
+        id: get-target-branch
         run: |
           TARGET_BRANCH=$(echo "${{ github.event.pull_request.base.ref }}")
           LABELS="$TARGET_BRANCH"
@@ -21,8 +21,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
            const { labels } = process.env;
-            console.log("labels",labels);
-            
+            console.log("Target Branch:",labels)
             const issue_number = context.payload.pull_request.number;
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
@@ -31,4 +30,4 @@ jobs:
               labels: [labels]
             });
         env:
-          labels: ${{ steps.check-label.outputs.labels }}
+          labels: ${{ steps.get-target-branch.outputs.labels }}
