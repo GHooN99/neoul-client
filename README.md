@@ -1,6 +1,5 @@
-## Neoul client
-> 모두의 다이어리, 너울 (제작 중)
-
+## Neoul UI
+> 
 ### 프로젝트 설명 
 자발적인 학습을 통하여 알게 된 다양한 기술을 적용해보고자 시작한 개인 프로젝트입니다.
 
@@ -8,13 +7,8 @@
 `react v18` `next v12`  `typescript` `styled-components` `react-query` `storybook` `etc...`
 
 ### 관련 링크 
-- [서비스 링크 (개발 진행 중)](https://neoul-client-6i4zx7wld-ghoon99.vercel.app)
 - [storybook 컴포넌트 문서](https://neoul-ui.netlify.app)
-
-- [코딩 컨벤션](https://bit.ly/code_convention_ghoon99)
-
-- [피그마 디자인](https://www.figma.com/file/yHqiW4qfukjgctfufpO7vw/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EB%84%88%EC%9A%B8?node-id=0%3A1&t=Arc84SCkFDDsEqQj-1)
-
+- 
 ### 특이사항
 #### figma를 이용한 간단한 디자인 가이드 제작, 와이어프레임 제작
 <div align=center>
